@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org" lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <title>Instruments</title>
+
+    <link th:href="@{/styles/intruments.css}" rel="stylesheet" />
+
+</head>
+<body>
+
+<h1>Songs</h1>
+
+<a href="/instruments/add_instruments" class="link-button">Add a new instrument</a>
+
+<!-- Check if songs list is empty -->
+<div th:if="${#lists.isEmpty(instruments)}">
+    <p>No instruments available. Please add some instruments.</p>
+</div>
+
+<!-- Display songs list when it's not empty -->
+<ul th:if="${!#lists.isEmpty(instruments)}">
+    <li th:each="instrument : ${instrruments}">
+        <div class="instrument-item">
+            <span th:text="${instrument.name} + ' - ' + ${instrument.title}"></span>
+            <img th:src="${instrument.photo}" th:alt="${instrument.brand}" width="100" height="100"/>
+            <span th:text="${instrument.price}"></span>
+            <form  th:action="@{'/{id}'(id=${song.id})}" th:method="delete" >
+                <button type="submit" id="submitButton">
+                    DELETE
+                </button>
+            </form>
+
+            <button>
+                UPDATE
+            </button>
+        </div>
+    </li>
+</ul>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
